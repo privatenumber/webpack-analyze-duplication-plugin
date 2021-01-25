@@ -14,10 +14,10 @@ Example snippet:
 		"size": "326.4 kB",
 
 		// Size savings if de-duped
-		"sizeImpact": "979.2 kB",
+		"size-impact": "979.2 kB",
 
 		// Chunks the module is duplicated in
-		"includedIn": [
+		"included-in": [
 			["index.js"],
 			["some-file.js"],
 			...
