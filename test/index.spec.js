@@ -34,8 +34,8 @@ test('duplication', async () => {
 	expect(duplicationReport).toMatchObject({
 		'/duplicated.js': {
 			size: '33 B',
-			sizeImpact: '33 B',
-			includedIn: [
+			'size-impact': '33 B',
+			'included-in': [
 				['0.js'],
 				['1.js'],
 			],
@@ -67,8 +67,8 @@ test('duplication with multi-file chunks', async () => {
 	expect(duplicationReport).toMatchObject({
 		'/duplicated.js': {
 			size: '33 B',
-			sizeImpact: '33 B',
-			includedIn: [
+			'size-impact': '33 B',
+			'included-in': [
 				['0.js', '0.js.map'],
 				['1.js', '1.js.map'],
 			],
