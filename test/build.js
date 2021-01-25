@@ -5,13 +5,13 @@ const { ufs } = require('unionfs');
 const { Volume } = require('memfs');
 const AnalyzeDuplicationPlugin = require('..');
 
-function build(volJson) {
+function build(volJson, configure) {
 	return new Promise((resolve, reject) => {
 		const mfs = Volume.fromJSON(volJson);
 
 		mfs.join = path.join.bind(path);
 
-		const compiler = webpack({
+		const config = {
 			mode: 'development',
 
 			devtool: false,
@@ -34,7 +34,13 @@ function build(volJson) {
 			plugins: [
 				new AnalyzeDuplicationPlugin(),
 			],
-		});
+		};
+
+		if (typeof configure === 'function') {
+			configure(config);
+		}
+
+		const compiler = webpack(config);
 
 		compiler.inputFileSystem = ufs.use(fs).use(mfs);
 		compiler.outputFileSystem = mfs;

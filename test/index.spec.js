@@ -42,3 +42,36 @@ test('duplication', async () => {
 		},
 	});
 });
+
+test('duplication with multi-file chunks', async () => {
+	const report = await build({
+		'/index.js': `
+			import('./chunk-a');
+			import('./chunk-b');
+		`,
+		'/chunk-a.js': `
+			import './duplicated.js';
+		`,
+		'/chunk-b.js': `
+			import './duplicated.js';
+		`,
+		'/duplicated.js': `
+			console.log('Duplicated');
+		`,
+	}, (config) => {
+		config.devtool = 'sourcemap';
+	});
+
+	const duplicationReport = JSON.parse(report.compilation.compiler.outputFileSystem.readFileSync('/dist/duplication-report.json').toString());
+
+	expect(duplicationReport).toMatchObject({
+		'/duplicated.js': {
+			size: '33 B',
+			sizeImpact: '33 B',
+			includedIn: [
+				['0.js', '0.js.map'],
+				['1.js', '1.js.map'],
+			],
+		},
+	});
+});
