@@ -2,7 +2,9 @@
 
 Detect duplicated modules in your Webpack build.
 
-Produce a `duplication-report.json` that contains a full-report on duplicated modules. Here's an example snippet:
+Produce a `duplication-report.json` that contains a full-report on duplicated modules.
+
+Example snippet:
 ```json5
 {
 	// The duplicated module path
