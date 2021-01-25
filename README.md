@@ -31,7 +31,7 @@ Example snippet:
 <sub>If you like this project, please star it & [follow me](https://github.com/privatenumber) to see what other cool projects I'm working on! ❤️</sub>
 
 ## 🙋‍♂️ Why?
-Webpack configurations are complicated so it's easy to overlook misconfigurations and bloated distribution bundles.
+Webpack configuration is complicated. It's easy to overlook misconfigurations and bloated distribution bundles.
 
 Use this plugin to make sure there are no duplicated modules, or that they're only duplicated where you want them to be.
 
@@ -54,3 +54,8 @@ Add to your `webpack.config.js`:
       ]
   }
 ```
+
+## 👨‍👩‍👦‍👦 Related
+
+- [webpack-distsize](https://github.com/privatenumber/webpack-distsize) - Track Webpack output size via version control
+- [webpack-dependency-size](https://github.com/privatenumber/webpack-dependency-size) - Webpack plugin to get an overview of bundled dependencies and their size
