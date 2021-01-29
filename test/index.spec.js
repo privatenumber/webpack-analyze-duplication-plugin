@@ -9,10 +9,10 @@ test('no duplication', async () => {
 
 	const duplicationReport = JSON.parse(report.compilation.compiler.outputFileSystem.readFileSync('/dist/duplication-report.json').toString());
 
-	expect(duplicationReport).toEqual( {
-		"total-potential-size-savings": "0 B",
-		"duplicated-modules-count": 0,
-		"duplicated-modules": []
+	expect(duplicationReport).toEqual({
+		'total-potential-size-savings': '0 B',
+		'duplicated-modules-count': 0,
+		'duplicated-modules': [],
 	});
 });
 
@@ -36,19 +36,19 @@ test('duplication', async () => {
 	const duplicationReport = JSON.parse(report.compilation.compiler.outputFileSystem.readFileSync('/dist/duplication-report.json').toString());
 
 	expect(duplicationReport).toMatchObject({
-		"total-potential-size-savings": "33 B",
-		"duplicated-modules-count": 1,
-		"duplicated-modules": [
+		'total-potential-size-savings': '33 B',
+		'duplicated-modules-count': 1,
+		'duplicated-modules': [
 			{
-				"module": "/duplicated.js",
-				"size": "33 B",
-				"potential-size-savings": "33 B",
-				"included-in": [
-					["0.js"],
-					["1.js"]
-				]
-			}
-		]
+				module: '/duplicated.js',
+				size: '33 B',
+				'potential-size-savings': '33 B',
+				'included-in': [
+					['0.js'],
+					['1.js'],
+				],
+			},
+		],
 	});
 });
 
@@ -74,18 +74,18 @@ test('duplication with multi-file chunks', async () => {
 	const duplicationReport = JSON.parse(report.compilation.compiler.outputFileSystem.readFileSync('/dist/duplication-report.json').toString());
 
 	expect(duplicationReport).toMatchObject({
-		"total-potential-size-savings": "33 B",
-		"duplicated-modules-count": 1,
-		"duplicated-modules": [
+		'total-potential-size-savings': '33 B',
+		'duplicated-modules-count': 1,
+		'duplicated-modules': [
 			{
-				"module": "/duplicated.js",
-				"size": "33 B",
-				"potential-size-savings": "33 B",
-				"included-in": [
-					["0.js","0.js.map"],
-					["1.js","1.js.map"]
-				]
-			}
-		]
+				module: '/duplicated.js',
+				size: '33 B',
+				'potential-size-savings': '33 B',
+				'included-in': [
+					['0.js', '0.js.map'],
+					['1.js', '1.js.map'],
+				],
+			},
+		],
 	});
 });
