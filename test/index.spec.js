@@ -9,7 +9,7 @@ test('no duplication', async () => {
 
 	const duplicationReport = JSON.parse(report.compilation.compiler.outputFileSystem.readFileSync('/dist/duplication-report.json').toString());
 
-	expect(duplicationReport).toEqual({});
+	expect(duplicationReport).toEqual([]);
 });
 
 test('duplication', async () => {
@@ -31,16 +31,17 @@ test('duplication', async () => {
 
 	const duplicationReport = JSON.parse(report.compilation.compiler.outputFileSystem.readFileSync('/dist/duplication-report.json').toString());
 
-	expect(duplicationReport).toMatchObject({
-		'/duplicated.js': {
+	expect(duplicationReport).toMatchObject([
+		{
+			module: '/duplicated.js',
 			size: '33 B',
-			'size-impact': '33 B',
+			'potential-size-savings': '33 B',
 			'included-in': [
 				['0.js'],
 				['1.js'],
 			],
 		},
-	});
+	]);
 });
 
 test('duplication with multi-file chunks', async () => {
@@ -64,14 +65,15 @@ test('duplication with multi-file chunks', async () => {
 
 	const duplicationReport = JSON.parse(report.compilation.compiler.outputFileSystem.readFileSync('/dist/duplication-report.json').toString());
 
-	expect(duplicationReport).toMatchObject({
-		'/duplicated.js': {
+	expect(duplicationReport).toMatchObject([
+		{
+			module: '/duplicated.js',
 			size: '33 B',
-			'size-impact': '33 B',
+			'potential-size-savings': '33 B',
 			'included-in': [
 				['0.js', '0.js.map'],
 				['1.js', '1.js.map'],
 			],
 		},
-	});
+	]);
 });
