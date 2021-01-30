@@ -6,26 +6,27 @@ Produce a `duplication-report.json` that contains a full-report on duplicated mo
 
 Example snippet:
 ```json5
-{
-	// The duplicated module path
-	"/node_modules/vue/dist/vue.esm.js": {
+[
+	{
+		// The duplicated module path
+		"module": "/node_modules/vue/dist/vue.esm.js",
 
 		// Size of module
 		"size": "326.4 kB",
 
 		// Size savings if de-duped
-		"size-impact": "979.2 kB",
+		"potential-size-savings": "979.2 kB",
 
 		// Chunks the module is duplicated in
 		"included-in": [
 			["index.js"],
 			["some-file.js"],
 			...
-		]
+		],
 	},
 
 	...
-}
+]
 ```
 
 <sub>If you like this project, please star it & [follow me](https://github.com/privatenumber) to see what other cool projects I'm working on! ❤️</sub>
